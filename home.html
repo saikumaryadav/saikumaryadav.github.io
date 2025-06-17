@@ -3,95 +3,1190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saikumar Payyavula - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Saikumar Payyavula | Software Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark-color);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(231, 76, 60, 0.1) 100%);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-text h2 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .hero-text p {
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 300px;
+            max-height: 450px;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: var(--box-shadow);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .social-icons {
+            display: flex;
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-color);
+            border-radius: 50%;
+            margin-right: 15px;
+            color: var(--dark-color);
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .about-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .skills {
+            flex: 1;
+        }
+
+        .skill-item {
+            margin-bottom: 25px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: var(--light-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        /* Experience Section */
+        .experience-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .tab-btn {
+            padding: 10px 25px;
+            background-color: transparent;
+            border: none;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            color: var(--text-light);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-icon i {
+            font-size: 12px;
+            color: white;
+        }
+
+        .timeline-duration {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .timeline-subtitle {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .timeline-text {
+            color: var(--text-light);
+        }
+
+        .timeline-text ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .timeline-text li {
+            margin-bottom: 10px;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .project-description {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--primary-color);
+            border-radius: 5px;
+            font-size: 12px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .project-links {
+            display: flex;
+        }
+
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 15px;
+            color: var(--text-light);
+        }
+
+        .project-links a i {
+            margin-right: 5px;
+        }
+
+        .project-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .contact-info {
+            flex: 1;
+            padding-right: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .contact-info p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+
+        .contact-text h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        .contact-text p {
+            margin: 0;
+            color: var(--text-light);
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Form Messages */
+        #form-messages {
+            display: none;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        #form-messages.success {
+            display: block;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        #form-messages.error {
+            display: block;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .footer-links li {
+            margin: 0 15px;
+        }
+
+        .footer-links a {
+            color: white;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content, .about-content, .contact-content {
+                flex-direction: column;
+            }
+
+            .hero-text, .about-text, .contact-info {
+                padding-right: 0;
+                margin-bottom: 50px;
+            }
+
+            .hero-image {
+                margin-top: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .hero-text h2 {
+                font-size: 20px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+            }
+
+            .experience-tabs {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Saikumar Payyavula</h1>
-            <p>Oklahoma, USA (Flexible to Relocate within USA)</p>
-            <p><a href="mailto:saikumar.payyavula@okstate.edu">saikumar.payyavula@okstate.edu</a> | +1 (405) 269-2581 | <a href="https://www.linkedin.com/in/saikumar-payyavula-01084a154/" target="_blank">LinkedIn</a></p>
-        </header>
-        <main>
-            <section>
-                <h2>Professional Experience</h2>
-                <div class="job">
-                    <h3>AWS Developer</h3>
-                    <p>Oklahoma State University – Part Time – Stillwater, USA <span class="date">January 2024 – Present</span></p>
-                    <ul>
-                        <li>Developed feature to generate 'ET-Forecast' values in the Canopeo app.</li>
-                        <li>Managed authenticated beta-users' information to facilitate 'ET-Forecast' generation.</li>
-                        <li>Stored crop details and ET-Forecast information in AWS S3 buckets.</li>
-                        <li>Handled email notifications to deliver crop ET-Forecast values to users.</li>
-                        <li>Implemented GitHub Actions for the automated deployment of AWS Lambda code.</li>
-                    </ul>
-                </div>
-                <div class="job">
-                    <h3>Member Of Technical Staff</h3>
-                    <p>Techmojo Solutions Pvt Ltd – Hyderabad, India <span class="date">July 2022 – July 2023</span></p>
-                    <ul>
-                        <li>Designed and implemented the "Favorite Sports & Events" feature, providing all users with quick access.</li>
-                        <li>Successfully integrated REST API to enhance system functionality.</li>
-                        <li>Developed and implemented "Dynamic Plugins" for validating sports and events details, ensuring data accuracy.</li>
-                        <li>Conducted unit testing and wrote test cases using Junit to guarantee the reliability of the code.</li>
-                        <li>Led the design and development of the application following Agile Scrum methodology, breaking down the project into sprints.</li>
-                    </ul>
-                </div>
-                <div class="job">
-                    <h3>Software Engineer</h3>
-                    <p>Vassar Labs IT Solutions Pvt Ltd – Hyderabad, India <span class="date">January 2020 – June 2022</span></p>
-                    <ul>
-                        <li>Engineered a location hierarchy cache for efficient storage of metadata.</li>
-                        <li>Served as a Back-end Developer, responsible for designing and implementing Controllers and DB Services through REST API integration.</li>
-                        <li>Implemented aggregation and business logic services at the service layer, enhancing system functionality.</li>
-                        <li>Managed integration with REST API to ensure seamless communication between components.</li>
-                        <li>Responsible for putting in place the backend architecture for the calculations and service level implementations.</li>
-                        <li>Written bulk data into Excel files using the Spring framework and reading it from CSV and Excel files into a database in the POJO format.</li>
-                    </ul>
-                </div>
-            </section>
-            <section>
-                <h2>Certifications</h2>
-                <ul>
-                    <li>Completed Pre-Education Program Training at EPAM Systems (February 26th to July 9th, 2019)</li>
-                    <li>Achieved a score of 88% in NPTEL's Java course</li>
-                    <li>Attained a score of 65% in NPTEL's Machine Learning course</li>
-                    <li>Successfully mastered Hibernate and JPA with Spring Boot through Udemy</li>
-                    <li>Successfully Completed AWS Cloud Technical Essentials from Coursera</li>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Saikumar<span>.</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
-            </section>
-            <section>
-                <h2>Education</h2>
-                <ul>
-                    <li>
-                        <strong>Master of Science, Computer Science</strong><br>
-                        Oklahoma State University, Stillwater, USA <span class="date">August 2023 - May 2025</span><br>
-                        GPA: 3.3 / 4.0
-                    </li>
-                    <li>
-                        <strong>Bachelor of Technology, Computer Science</strong><br>
-                        Rajiv Gandhi University of Knowledge & Technologies, Basar, India <span class="date">June 2016 – May 2020</span><br>
-                        GPA: 8.0 / 10
-                    </li>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm <span>Saikumar Payyavula</span></h1>
+                    <h2>Software Development Engineer</h2>
+                    <p>Experienced Software Engineer with 4+ years of expertise in Java, Spring Boot, Python, and web development frameworks. Recently completed Master's in Computer Science at Oklahoma State University. Passionate about building scalable and efficient software solutions.</p>
+                    <div>
+                        <a href="#contact" class="btn">Contact Me</a>
+                        <a href="#" class="btn btn-outline">Download CV</a>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/saikumar-payyavula-01084a154/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/saikumaryadav" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://leetcode.com/u/saiyadav/" target="_blank"><i class="fas fa-code"></i></a>
+                        <a href="mailto:saikumar.payyavula@okstate.edu"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="C:\Users\saiku\OneDrive\Pictures\Headshots\1-1.jpg" alt="Saikumar Payyavula">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Who am I?</h3>
+                    <p>I'm a passionate Software Engineer with expertise in Java, Spring Boot, and cloud technologies. I recently completed my Master's in Computer Science at Oklahoma State University where I also worked as a Graduate Research Assistant.</p>
+                    <p>With 4+ years of professional experience, I've successfully delivered high-quality software solutions, optimized system performance, and implemented scalable architectures for various organizations.</p>
+                    <p>My technical skills span across backend development, microservices architecture, cloud computing, and full-stack development. I'm particularly interested in solving complex problems and building efficient, scalable systems.</p>
+                </div>
+                <div class="skills">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Java & Spring Boot</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Microservices</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>AWS Cloud</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Python</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>ReactJS</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Experience</h2>
+            </div>
+            <div class="experience-tabs">
+                <button class="tab-btn active" data-tab="professional">Professional</button>
+                <button class="tab-btn" data-tab="education">Education</button>
+            </div>
+            <div class="tab-content active" id="professional">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <span class="timeline-duration">Jan 2024 - May 2025</span>
+                    <h3 class="timeline-title">Software Engineer (Graduate Research Assistantship)</h3>
+                    <h4 class="timeline-subtitle">Oklahoma State University</h4>
+                    <div class="timeline-text">
+                        <ul>
+                            <li>Developed and integrated backend services using Java and Spring Boot to calculate and serve ET-Forecast values within the Canopeo mobile application.</li>
+                            <li>Architected a secure data model and RESTful API for authenticated beta-users, increasing forecast accuracy by 25% and improving response efficiency by 40%.</li>
+                            <li>Implemented cloud-native storage solutions using AWS S3 to persist crop and forecast data, ensuring high availability and scalability.</li>
+                            <li>Built and deployed an email notification service using Spring Boot and Amazon SES to alert users of forecast updates, which led to a 25% rise in user engagement.</li>
+                            <li>Automated deployment workflows for Spring Boot microservices via a robust CI/CD pipeline using GitHub Actions and AWS Lambda.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <span class="timeline-duration">Jun 2022 - Jul 2023</span>
+                    <h3 class="timeline-title">Software Development Engineer</h3>
+                    <h4 class="timeline-subtitle">Techmojo Solutions Pvt Ltd</h4>
+                    <div class="timeline-text">
+                        <ul>
+                            <li>Implemented security best practices in application development, aligning with 12-factor app principles to ensure compliance and data protection.</li>
+                            <li>Collaborated with cross-functional teams to implement monitoring and alerting systems, improving incident response time by 50%.</li>
+                            <li>Practiced Test-Driven Development (TDD) to ensure code quality, achieving a 98% bug-free deployment across multiple projects.</li>
+                            <li>Developed and maintained CI/CD pipelines using Jenkins, Maven and GitHub resulting in a 35% reduction in deployment time.</li>
+                            <li>Orchestrated the migration of legacy applications to a modern microservices architecture using Spring Boot and RESTful APIs.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <span class="timeline-duration">Jan 2020 - Jun 2022</span>
+                    <h3 class="timeline-title">Software Engineer</h3>
+                    <h4 class="timeline-subtitle">Vassar Labs IT Solutions Pvt Ltd</h4>
+                    <div class="timeline-text">
+                        <ul>
+                            <li>Created Open API swagger specifications for workflow requirements, enabling faster integration and reducing API documentation errors by 30%.</li>
+                            <li>Implemented Java 8 coding with different functional features like Lambda expressions, Time and Stream APIs.</li>
+                            <li>Worked on fraud adaptive rules engine which helped to detect fraud in real time for all card transactions.</li>
+                            <li>Integrated front-end ReactJS UI components with Microservices endpoints, reducing front-end load time by 15%.</li>
+                            <li>Built single-page UI components using ReactJS and NPM with Bootstrap, improving application load speed by 20%.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="education">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="timeline-duration">Aug 2023 - May 2025</span>
+                    <h3 class="timeline-title">Master of Science, Computer Science</h3>
+                    <h4 class="timeline-subtitle">Oklahoma State University, Stillwater, USA</h4>
+                    <div class="timeline-text">
+                        <p>GPA: 3.54 / 4.0</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="timeline-duration">Jun 2016 - May 2020</span>
+                    <h3 class="timeline-title">Bachelor of Technology, Computer Science</h3>
+                    <h4 class="timeline-subtitle">Rajiv Gandhi University of Knowledge & Technologies, Basar, India</h4>
+                    <div class="timeline-text">
+                        <p>GPA: 7.94 / 10</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="eCommerce Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">eCommerce Platform</h3>
+                        <p class="project-description">A full-featured eCommerce backend with user management, product catalog, cart functionality, and order processing.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">REST API</span>
+                            <span class="tech-tag">JWT Authentication</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/saikumaryadav/eCommerce-Backend" target="_blank"><i class="fas fa-code"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Fraud Detection System">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Fraud Detection System</h3>
+                        <p class="project-description">Real-time fraud detection engine for card transactions using adaptive rules and machine learning.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">Microservices</span>
+                            <span class="tech-tag">Kafka</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/saikumaryadav/eCommerce-Backend" target="_blank"><i class="fas fa-code"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="C:\Users\saiku\OneDrive\Desktop\react\canopeo.jpg" alt="ET Forecast System">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ET Forecast System</h3>
+                        <p class="project-description">Backend services for Canopeo mobile app providing ET forecast values with high accuracy.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">AWS S3</span>
+                            <span class="tech-tag">CI/CD</span>
+                            <span class="tech-tag">AWS Lambda</span>
+                            <span class="tech-tag">AWS SES</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Okstate-WaDE/et_forecast_lambda" target="_blank"><i class="fas fa-code"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm currently looking for new opportunities in software engineering. Whether you have a question or just want to say hi, I'll get back to you as soon as possible!</p>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>saikumar.payyavula@okstate.edu</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>+1 (405) 269-2581</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Location</h4>
+                            <p>Stillwater, Oklahoma, USA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm" action="https://formspree.io/f/mvoeyrno" method="POST">
+                        <div id="form-messages"></div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
-            </section>
-            <section>
-                <h2>Technical Skills</h2>
-                <ul>
-                    <li><strong>Languages:</strong> Java, Python, Go, C#</li>
-                    <li><strong>UI Layer:</strong> HTML, CSS, JavaScript, TypeScript, jQuery, React, Angular</li>
-                    <li><strong>Frameworks and Tools:</strong> Spring, Spring Boot, .Net, Git, Node.js, Tableau</li>
-                    <li><strong>Databases and Query Languages:</strong> SQL, PostgreSQL, Cassandra, MongoDB, GraphQL</li>
-                    <li><strong>CI/CD:</strong> Docker, Kubernetes, AWS Lambda, AWS EC2, AWS S3, AWS Code Pipeline</li>
-                </ul>
-            </section>
-        </main>
-        <footer>
-            <p>&copy; 2024 Saikumar Payyavula. All rights reserved.</p>
-        </footer>
-    </div>
-    <script src="script.js"></script>
+                <p class="copyright">© 2023 Saikumar Payyavula. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Experience Tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                btn.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Form submission handling
+        const contactForm = document.getElementById('contactForm');
+        const formMessages = document.getElementById('form-messages');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitButton.disabled = true;
+            
+            // Create form data
+            const formData = new FormData(contactForm);
+            
+            // Use Formspree endpoint
+            fetch('https://formspree.io/f/mvoeyrno', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Success message
+                    formMessages.className = 'success';
+                    formMessages.innerHTML = '<i class="fas fa-check-circle"></i> Message sent successfully! I\'ll get back to you soon.';
+                    contactForm.reset();
+                } else {
+                    // Error message
+                    formMessages.className = 'error';
+                    formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> Oops! There was a problem sending your message. Please try again.';
+                }
+            })
+            .catch(error => {
+                // Error message
+                formMessages.className = 'error';
+                formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> Oops! There was a problem sending your message. Please try again.';
+            })
+            .finally(() => {
+                // Reset button state
+                submitButton.innerHTML = originalButtonText;
+                submitButton.disabled = false;
+                
+                // Scroll to messages
+                formMessages.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        });
+    </script>
 </body>
 </html>
