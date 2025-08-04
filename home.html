@@ -30,6 +30,7 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: #f9f9f9;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
 
         a {
@@ -69,6 +70,7 @@
             font-size: 24px;
             font-weight: 700;
             color: var(--dark-color);
+            z-index: 1001; /* Ensure logo stays above mobile menu */
         }
 
         .logo span {
@@ -108,11 +110,12 @@
         .hamburger {
             display: none;
             cursor: pointer;
+            z-index: 1001; /* Stay above mobile menu */
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh; /* Changed to min-height for better mobile */
             display: flex;
             align-items: center;
             background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(231, 76, 60, 0.1) 100%);
@@ -123,11 +126,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap; /* Added for mobile */
         }
 
         .hero-text {
             flex: 1;
             padding-right: 50px;
+            min-width: 300px; /* Prevent text from becoming too narrow */
         }
 
         .hero-text h1 {
@@ -186,6 +191,7 @@
         .hero-image {
             flex: 1;
             text-align: center;
+            min-width: 300px; /* Prevent image from becoming too narrow */
         }
 
         .hero-image img {
@@ -207,6 +213,7 @@
         .social-icons {
             display: flex;
             margin-top: 30px;
+            flex-wrap: wrap; /* Added for mobile */
         }
 
         .social-icons a {
@@ -218,6 +225,7 @@
             background-color: var(--light-color);
             border-radius: 50%;
             margin-right: 15px;
+            margin-bottom: 10px; /* Added for mobile */
             color: var(--dark-color);
             transition: var(--transition);
         }
@@ -261,11 +269,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap; /* Added for mobile */
         }
 
         .about-text {
             flex: 1;
             padding-right: 50px;
+            min-width: 300px; /* Prevent text from becoming too narrow */
         }
 
         .about-text h3 {
@@ -281,6 +291,7 @@
 
         .skills {
             flex: 1;
+            min-width: 300px; /* Prevent skills from becoming too narrow */
         }
 
         .skill-item {
@@ -311,6 +322,7 @@
             display: flex;
             justify-content: center;
             margin-bottom: 40px;
+            flex-wrap: wrap; /* Added for mobile */
         }
 
         .tab-btn {
@@ -323,6 +335,7 @@
             color: var(--text-light);
             position: relative;
             transition: var(--transition);
+            margin: 5px; /* Added for mobile spacing */
         }
 
         .tab-btn.active {
@@ -494,6 +507,7 @@
             align-items: center;
             margin-right: 15px;
             color: var(--text-light);
+            font-size: 14px; /* Added for mobile readability */
         }
 
         .project-links a i {
@@ -508,11 +522,14 @@
         .contact-content {
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap; /* Added for mobile */
         }
 
         .contact-info {
             flex: 1;
             padding-right: 50px;
+            min-width: 300px; /* Prevent content from becoming too narrow */
+            margin-bottom: 40px; /* Added for mobile spacing */
         }
 
         .contact-info h3 {
@@ -543,6 +560,7 @@
             margin-right: 20px;
             color: var(--primary-color);
             font-size: 20px;
+            flex-shrink: 0; /* Prevent icon from shrinking */
         }
 
         .contact-text h4 {
@@ -554,6 +572,7 @@
         .contact-text p {
             margin: 0;
             color: var(--text-light);
+            font-size: 16px;
         }
 
         .contact-form {
@@ -562,6 +581,7 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: var(--box-shadow);
+            min-width: 300px; /* Prevent form from becoming too narrow */
         }
 
         .form-group {
@@ -630,14 +650,17 @@
             display: flex;
             list-style: none;
             margin-bottom: 20px;
+            flex-wrap: wrap; /* Added for mobile */
+            justify-content: center; /* Center links on mobile */
         }
 
         .footer-links li {
-            margin: 0 15px;
+            margin: 10px 15px; /* Better mobile spacing */
         }
 
         .footer-links a {
             color: white;
+            font-size: 16px;
         }
 
         .footer-links a:hover {
@@ -663,6 +686,10 @@
             .hero-image {
                 margin-top: 50px;
             }
+            
+            .hero-text h1 {
+                font-size: 42px; /* Slightly smaller for tablet */
+            }
         }
 
         @media (max-width: 768px) {
@@ -677,6 +704,7 @@
                 align-items: center;
                 padding-top: 50px;
                 transition: var(--transition);
+                overflow-y: auto; /* Allow scrolling if menu is long */
             }
 
             .nav-links.active {
@@ -684,47 +712,109 @@
             }
 
             .nav-links li {
-                margin: 15px 0;
+                margin: 20px 0; /* More space between menu items */
             }
 
             .hamburger {
                 display: block;
+                font-size: 24px;
             }
 
             .hero-text h1 {
                 font-size: 36px;
+                line-height: 1.2; /* Better line spacing */
             }
 
             .hero-text h2 {
                 font-size: 20px;
             }
+            
+            .hero-text p {
+                font-size: 16px;
+            }
 
             .section-title h2 {
                 font-size: 30px;
             }
-
+            
+            .section {
+                padding: 70px 0; /* Less padding on mobile */
+            }
+            
+            .about-text h3, .contact-info h3 {
+                font-size: 24px;
+            }
+            
             .projects-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .hero-image img {
+                max-width: 250px; /* Slightly smaller on mobile */
+            }
+            
+            .btn, .btn-outline {
+                display: block;
+                width: 100%;
+                margin-left: 0;
+                margin-bottom: 15px;
+                text-align: center;
             }
         }
 
         @media (max-width: 576px) {
-            .btn {
-                display: block;
-                width: 100%;
-                margin-bottom: 15px;
+            .hero-text h1 {
+                font-size: 32px;
             }
-
-            .btn-outline {
-                margin-left: 0;
+            
+            .hero-text h2 {
+                font-size: 18px;
             }
-
+            
+            .hero-text {
+                min-width: 100%; /* Full width on small mobile */
+            }
+            
+            .hero-image {
+                min-width: 100%; /* Full width on small mobile */
+            }
+            
             .experience-tabs {
                 flex-direction: column;
             }
-
+            
             .tab-btn {
+                width: 100%; /* Full width tabs on small mobile */
+                text-align: center;
+            }
+            
+            .timeline-item {
+                padding-left: 30px; /* Less padding on small screens */
+            }
+            
+            .timeline-title {
+                font-size: 20px;
+            }
+            
+            .timeline-subtitle {
+                font-size: 14px;
+            }
+            
+            .timeline-text {
+                font-size: 14px;
+            }
+            
+            .contact-item {
+                flex-direction: column; /* Stack contact items */
+                align-items: flex-start;
+            }
+            
+            .contact-icon {
                 margin-bottom: 10px;
+            }
+            
+            .project-links a {
+                font-size: 13px; /* Smaller links on mobile */
             }
         }
     </style>
@@ -769,7 +859,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="https://raw.githubusercontent.com/saikumaryadav/saikumaryadav.github.io/main/1-1.jpg" alt="Saikumar Payyavula">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Saikumar Payyavula">
                 </div>
             </div>
         </div>
@@ -975,7 +1065,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://raw.githubusercontent.com/saikumaryadav/saikumaryadav.github.io/main/canopeo.jpg" alt="ET Forecast System">
+                        <img src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="ET Forecast System">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">ET Forecast System</h3>
@@ -1068,124 +1158,135 @@
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <p class="copyright">© 2023 Saikumar Payyavula. All rights reserved.</p>
+                <p class="copyright">© <span id="currentYear"></span> Saikumar Payyavula. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Navigation
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
+        // Ensure DOM is fully loaded before running scripts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Navigation
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.innerHTML = navLinks.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
             });
-        });
 
-        // Experience Tabs
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const tabId = btn.getAttribute('data-tab');
-                
-                // Remove active class from all buttons and contents
-                tabBtns.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-                
-                // Add active class to clicked button and corresponding content
-                btn.classList.add('active');
-                document.getElementById(tabId).classList.add('active');
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                });
             });
-        });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+            // Experience Tabs
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabId = btn.getAttribute('data-tab');
+                    
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    btn.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
             });
-        });
 
-        // Add shadow to header on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.boxShadow = 'none';
-            }
-        });
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
 
-        // Form submission handling
-        const contactForm = document.getElementById('contactForm');
-        const formMessages = document.getElementById('form-messages');
-
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show loading state
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.innerHTML;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitButton.disabled = true;
-            
-            // Create form data
-            const formData = new FormData(contactForm);
-            
-            // Use Formspree endpoint
-            fetch('https://formspree.io/f/mvoeyrno', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Success message
-                    formMessages.className = 'success';
-                    formMessages.innerHTML = '<i class="fas fa-check-circle"></i> Message sent successfully! I\'ll get back to you soon.';
-                    contactForm.reset();
+            // Add shadow to header on scroll
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
                 } else {
-                    // Error message
-                    formMessages.className = 'error';
-                    formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> Oops! There was a problem sending your message. Please try again.';
+                    header.style.boxShadow = 'none';
                 }
-            })
-            .catch(error => {
-                // Error message
-                formMessages.className = 'error';
-                formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> Oops! There was a problem sending your message. Please try again.';
-            })
-            .finally(() => {
-                // Reset button state
-                submitButton.innerHTML = originalButtonText;
-                submitButton.disabled = false;
-                
-                // Scroll to messages
-                formMessages.scrollIntoView({ behavior: 'smooth', block: 'center' });
             });
+
+            // Form submission handling
+            const contactForm = document.getElementById('contactForm');
+            const formMessages = document.getElementById('form-messages');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Show loading state
+                    const submitButton = contactForm.querySelector('button[type="submit"]');
+                    const originalButtonText = submitButton.innerHTML;
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    submitButton.disabled = true;
+                    
+                    // Create form data
+                    const formData = new FormData(contactForm);
+                    
+                    // Use Formspree endpoint
+                    fetch('https://formspree.io/f/mvoeyrno', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Success message
+                            formMessages.className = 'success';
+                            formMessages.innerHTML = '<i class="fas fa-check-circle"></i> Message sent successfully! I\'ll get back to you soon.';
+                            contactForm.reset();
+                        } else {
+                            // Error message
+                            formMessages.className = 'error';
+                            formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> Oops! There was a problem sending your message. Please try again.';
+                        }
+                    })
+                    .catch(error => {
+                        // Error message
+                        formMessages.className = 'error';
+                        formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> Oops! There was a problem sending your message. Please try again.';
+                    })
+                    .finally(() => {
+                        // Reset button state
+                        submitButton.innerHTML = originalButtonText;
+                        submitButton.disabled = false;
+                        
+                        // Scroll to messages
+                        formMessages.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    });
+                });
+            }
+            
+            // Set current year in footer
+            const yearElement = document.getElementById('currentYear');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
         });
     </script>
 </body>
